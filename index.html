@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DemoSite — Analytics Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="login-page" class="login-wrapper">
+    <div class="login-inner">
+      <div class="login-brand">
+        <p class="brand-logo">Demo<span class="muted">Site</span></p>
+        <p class="login-subtitle">Sign in to continue</p>
+      </div>
+      <div class="card">
+        <div class="hint-box">
+          <p><span class="hint-title">Demo credentials</span><br />admin / admin123<br />demo / demo2024</p>
+        </div>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autocomplete="username" autofocus placeholder="admin" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input type="password" id="password" name="password" autocomplete="current-password" placeholder="••••••••" />
+              <button type="button" id="toggle-pw" class="show-hide">show</button>
+            </div>
+          </div>
+          <div id="login-error" class="error-msg hidden">
+            <span>✕</span><span id="error-text"></span>
+          </div>
+          <button type="submit" id="login-btn" class="btn-primary full-width justify-center">Sign in</button>
+        </form>
+      </div>
+      <p class="login-footer">Analytics Demo · Plain HTML + CSS + JS</p>
+    </div>
+  </div>
+
+  <!-- APP SHELL -->
+  <div id="app" class="hidden app-shell">
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-brand" data-page="home">Demo<span class="muted">Site</span></a>
+        <nav class="nav-links" id="desktop-nav">
+          <a href="#" class="nav-item" data-page="home">Home</a>
+          <a href="#" class="nav-item" data-page="outbound">Outbound Links</a>
+          <a href="#" class="nav-item" data-page="form">Form</a>
+          <a href="#" class="nav-item" data-page="video">Video</a>
+          <a href="#" class="nav-item" data-page="download">Download</a>
+          <div class="nav-user">
+            <span class="user-name" id="nav-username"></span>
+            <button id="logout-btn" class="btn-signout">Sign out</button>
+          </div>
+        </nav>
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+          <svg id="icon-menu" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" width="20" height="20" class="hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu hidden">
+        <a href="#" class="mobile-nav-item" data-page="home">Home</a>
+        <a href="#" class="mobile-nav-item" data-page="outbound">Outbound Links</a>
+        <a href="#" class="mobile-nav-item" data-page="form">Form</a>
+        <a href="#" class="mobile-nav-item" data-page="video">Video</a>
+        <a href="#" class="mobile-nav-item" data-page="download">Download</a>
+        <div class="mobile-user">
+          <span class="user-name" id="mobile-username"></span>
+          <button id="mobile-logout-btn" class="btn-signout">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="page-content" class="flex-1">
+
+      <!-- HOME -->
+      <main id="page-home" class="page hidden">
+        <div class="container py-20">
+          <div class="hero-block">
+            <p class="section-label">Analytics Demo</p>
+            <h1 class="page-title">A clean site to test<br />your tracking setup.</h1>
+            <p class="hero-desc">Each page demonstrates a common interaction — outbound clicks, form submissions, video plays, and file downloads. Instrument them however you like.</p>
+            <a href="#" class="btn-primary" data-page="outbound">Explore pages <span class="muted">→</span></a>
+          </div>
+          <div class="feature-grid">
+            <a href="#" class="feature-card" data-page="outbound">
+              <span class="feature-icon">↗</span>
+              <h2>Outbound Links</h2>
+              <p>Buttons that open external URLs — ready for click tracking.</p>
+            </a>
+            <a href="#" class="feature-card" data-page="form">
+              <span class="feature-icon">✦</span>
+              <h2>Contact Form</h2>
+              <p>A validated form with client-side validation.</p>
+            </a>
+            <a href="#" class="feature-card" data-page="video">
+              <span class="feature-icon">▶</span>
+              <h2>Embedded Video</h2>
+              <p>YouTube iframe with full controls and play tracking.</p>
+            </a>
+            <a href="#" class="feature-card" data-page="download">
+              <span class="feature-icon">↓</span>
+              <h2>File Download</h2>
+              <p>A sample PDF ready for download tracking.</p>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <!-- OUTBOUND -->
+      <main id="page-outbound" class="page hidden">
+        <div class="container py-16">
+          <p class="section-label">Page 01</p>
+          <h1 class="page-title">Outbound Links</h1>
+          <p class="page-desc">Each button opens an external URL. The handler logs to the console — swap the <code>console.log</code> for a <code>gtag</code> call when ready.</p>
+          <div class="link-grid" id="outbound-grid"></div>
+          <div class="code-block">
+            <p class="code-comment">// Open DevTools Console to see click events</p>
+            <p><span class="code-fn">gtag</span>(<span class="code-str">'event'</span>, <span class="code-str">'outbound_click'</span>, {</p>
+            <p class="code-indent"><span class="code-key">link_url</span>: <span class="code-str">'https://...'</span>,</p>
+            <p class="code-indent"><span class="code-key">link_text</span>: <span class="code-str">'Visit Google'</span></p>
+            <p>});</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- FORM -->
+      <main id="page-form" class="page hidden">
+        <div class="container py-16">
+          <div id="form-view">
+            <p class="section-label">Page 02</p>
+            <h1 class="page-title">Contact Form</h1>
+            <p class="page-desc">A validated form. On submit, a <code>form_submit</code> event is logged — ready to wire into GA4.</p>
+            <div class="form-wrap">
+              <form id="contact-form" novalidate>
+                <div class="field">
+                  <label>Full name <span class="req">*</span></label>
+                  <input type="text" id="cf-name" placeholder="Jane Smith" />
+                  <p class="field-error hidden" id="err-name">Name is required</p>
+                </div>
+                <div class="field">
+                  <label>Email address <span class="req">*</span></label>
+                  <input type="email" id="cf-email" placeholder="jane@example.com" />
+                  <p class="field-error hidden" id="err-email">Enter a valid email</p>
+                </div>
+                <div class="field">
+                  <label>Subject</label>
+                  <select id="cf-subject">
+                    <option value="">Select a subject</option>
+                    <option value="general">General enquiry</option>
+                    <option value="support">Support</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Message <span class="req">*</span></label>
+                  <textarea id="cf-message" rows="5" placeholder="Your message..."></textarea>
+                  <p class="field-error hidden" id="err-message">Message is required (min 10 chars)</p>
+                </div>
+                <div class="checkbox-field">
+                  <input type="checkbox" id="cf-subscribe" />
+                  <label for="cf-subscribe">Subscribe to newsletter updates</label>
+                </div>
+                <button type="submit" id="form-submit-btn" class="btn-primary full-width justify-center">Send message</button>
+              </form>
+            </div>
+          </div>
+          <div id="form-success" class="hidden success-view">
+            <div class="success-icon">✓</div>
+            <h2>Message received</h2>
+            <p>Thanks for your submission. Check the console for the logged form data.</p>
+            <button id="form-reset-btn" class="btn-outline">Submit another</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- VIDEO -->
+      <main id="page-video" class="page hidden">
+        <div class="container py-16">
+          <p class="section-label">Page 03</p>
+          <h1 class="page-title">Embedded Video</h1>
+          <p class="page-desc">YouTube videos via iframe. A <code>video_play</code> event fires on each play — ready for GA4.</p>
+          <div class="video-layout">
+            <div class="video-main">
+              <div class="video-player-wrap" id="video-player-wrap"></div>
+              <div class="video-info">
+                <h2 id="video-title">Big Buck Bunny</h2>
+                <p id="video-desc">A classic open-source short film by Blender Foundation.</p>
+              </div>
+            </div>
+            <div class="playlist">
+              <p class="section-label" style="margin-bottom:1rem">Playlist</p>
+              <div id="playlist-items"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- DOWNLOAD -->
+      <main id="page-download" class="page hidden">
+        <div class="container py-16">
+          <p class="section-label">Page 04</p>
+          <h1 class="page-title">File Downloads</h1>
+          <p class="page-desc">Each download fires a <code>file_download</code> event to the console. Swap for a GA4 call to track in your dashboard.</p>
+          <div class="download-list" id="download-list"></div>
+          <div class="note-box">
+            <p><span class="note-bold">Note:</span> Sample files are served from the <code>/public</code> folder. Replace them with real assets as needed.</p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="nav-brand">Demo<span class="muted">Site</span></p>
+        <p class="footer-note">Built with plain HTML + CSS + JS</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
