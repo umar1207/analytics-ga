@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — DemoSite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .resources-hero { margin-bottom: 4rem; max-width: 36rem; }
+    .resources-section { margin-bottom: 3.5rem; }
+    .resources-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--stone-900);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--stone-200);
+    }
+    .llm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--stone-200);
+      border: 1px solid var(--stone-200);
+      margin-bottom: 0;
+    }
+    .llm-card {
+      background: var(--stone-50);
+      padding: 1.5rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background 0.15s;
+    }
+    .llm-card:hover { background: white; }
+    .llm-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .llm-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--stone-900);
+    }
+    .llm-arrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--stone-300);
+      transition: color 0.2s;
+    }
+    .llm-card:hover .llm-arrow { color: var(--stone-900); }
+    .llm-maker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--stone-400);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .llm-desc {
+      font-size: 0.8rem;
+      color: var(--stone-500);
+      line-height: 1.5;
+      margin-top: 0.25rem;
+    }
+    .llm-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--stone-200);
+      color: var(--stone-500);
+      background: white;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
+    @media (max-width: 900px) { .llm-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .llm-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKEQTXE552"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HKEQTXE552');
+</script>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Demo<span class="muted">Site</span></a>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="resources.html" class="nav-item active">Resources</a>
+      </nav>
+      <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+        <svg id="icon-menu" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" width="20" height="20" class="hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu hidden">
+      <a href="../index.html" class="mobile-nav-item">Home</a>
+      <a href="resources.html" class="mobile-nav-item active">Resources</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container py-16">
+
+      <div class="resources-hero">
+        <p class="section-label" style="margin-bottom:1rem">Resources</p>
+        <h1 class="page-title">LLM Tools &amp;<br />AI Platforms</h1>
+        <p class="page-desc" style="margin-bottom:0">
+          A curated list of large language models and AI platforms.
+          Each link opens the official product page in a new tab —
+          ready for <code>outbound_click</code> tracking.
+        </p>
+      </div>
+
+      <!-- Frontier Models -->
+      <div class="resources-section">
+        <p class="resources-section-title">Frontier Models</p>
+        <div class="llm-grid">
+          <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('claude.ai','Claude')">
+            <div class="llm-card-top">
+              <span class="llm-name">Claude</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Anthropic</span>
+            <p class="llm-desc">Constitutional AI model known for safety, nuance, and long-context reasoning.</p>
+            <span class="llm-tag">claude.ai</span>
+          </a>
+          <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('chatgpt.com','ChatGPT')">
+            <div class="llm-card-top">
+              <span class="llm-name">ChatGPT</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">OpenAI</span>
+            <p class="llm-desc">The model that kicked off the consumer AI wave. GPT-4o with voice, vision, and more.</p>
+            <span class="llm-tag">chatgpt.com</span>
+          </a>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('gemini.google.com','Gemini')">
+            <div class="llm-card-top">
+              <span class="llm-name">Gemini</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Google DeepMind</span>
+            <p class="llm-desc">Google's multimodal flagship deeply integrated with Search, Workspace, and Android.</p>
+            <span class="llm-tag">gemini.google.com</span>
+          </a>
+          <a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('copilot.microsoft.com','Copilot')">
+            <div class="llm-card-top">
+              <span class="llm-name">Copilot</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Microsoft</span>
+            <p class="llm-desc">OpenAI models embedded across Windows, Edge, Office 365, and GitHub.</p>
+            <span class="llm-tag">copilot.microsoft.com</span>
+          </a>
+          <a href="https://www.meta.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('meta.ai','Meta AI')">
+            <div class="llm-card-top">
+              <span class="llm-name">Meta AI</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Meta</span>
+            <p class="llm-desc">Llama-powered assistant built into WhatsApp, Instagram, Facebook, and Messenger.</p>
+            <span class="llm-tag">meta.ai</span>
+          </a>
+          <a href="https://grok.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('grok.com','Grok')">
+            <div class="llm-card-top">
+              <span class="llm-name">Grok</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">xAI</span>
+            <p class="llm-desc">Elon Musk's AI with real-time X/Twitter data access and an unfiltered personality.</p>
+            <span class="llm-tag">grok.com</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Open Source & Developer -->
+      <div class="resources-section">
+        <p class="resources-section-title">Open Source &amp; Developer-Focused</p>
+        <div class="llm-grid">
+          <a href="https://ollama.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('ollama.com','Ollama')">
+            <div class="llm-card-top">
+              <span class="llm-name">Ollama</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Ollama</span>
+            <p class="llm-desc">Run Llama, Mistral, Gemma, and other open models locally on your own machine.</p>
+            <span class="llm-tag">ollama.com</span>
+          </a>
+          <a href="https://huggingface.co/chat" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('huggingface.co','HuggingChat')">
+            <div class="llm-card-top">
+              <span class="llm-name">HuggingChat</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Hugging Face</span>
+            <p class="llm-desc">Free chat UI powered by open-source models. The hub for the ML community.</p>
+            <span class="llm-tag">huggingface.co/chat</span>
+          </a>
+          <a href="https://mistral.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('mistral.ai','Mistral')">
+            <div class="llm-card-top">
+              <span class="llm-name">Mistral</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Mistral AI</span>
+            <p class="llm-desc">Efficient open-weight models from Europe. Le Chat is their consumer product.</p>
+            <span class="llm-tag">mistral.ai</span>
+          </a>
+          <a href="https://groq.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('groq.com','Groq')">
+            <div class="llm-card-top">
+              <span class="llm-name">Groq</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Groq</span>
+            <p class="llm-desc">Blazing fast inference for open models via custom LPU chips. Developer API focus.</p>
+            <span class="llm-tag">groq.com</span>
+          </a>
+          <a href="https://together.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('together.ai','Together AI')">
+            <div class="llm-card-top">
+              <span class="llm-name">Together AI</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Together AI</span>
+            <p class="llm-desc">Cloud platform for running and fine-tuning open-source models at scale.</p>
+            <span class="llm-tag">together.ai</span>
+          </a>
+          <a href="https://lmstudio.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('lmstudio.ai','LM Studio')">
+            <div class="llm-card-top">
+              <span class="llm-name">LM Studio</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">LM Studio</span>
+            <p class="llm-desc">Desktop app to discover, download, and run local LLMs with a clean GUI.</p>
+            <span class="llm-tag">lmstudio.ai</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- API Platforms -->
+      <div class="resources-section">
+        <p class="resources-section-title">API &amp; Developer Platforms</p>
+        <div class="llm-grid">
+          <a href="https://platform.openai.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('platform.openai.com','OpenAI API')">
+            <div class="llm-card-top">
+              <span class="llm-name">OpenAI API</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">OpenAI</span>
+            <p class="llm-desc">GPT-4o, o1, embeddings, DALL·E, Whisper, and TTS — all via REST API.</p>
+            <span class="llm-tag">platform.openai.com</span>
+          </a>
+          <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('console.anthropic.com','Anthropic API')">
+            <div class="llm-card-top">
+              <span class="llm-name">Anthropic API</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Anthropic</span>
+            <p class="llm-desc">Claude models via API. Includes tool use, vision, and extended context windows.</p>
+            <span class="llm-tag">console.anthropic.com</span>
+          </a>
+          <a href="https://ai.google.dev" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('ai.google.dev','Google AI Studio')">
+            <div class="llm-card-top">
+              <span class="llm-name">Google AI Studio</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Google</span>
+            <p class="llm-desc">Free prototyping environment for Gemini models with generous API access.</p>
+            <span class="llm-tag">ai.google.dev</span>
+          </a>
+          <a href="https://openrouter.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('openrouter.ai','OpenRouter')">
+            <div class="llm-card-top">
+              <span class="llm-name">OpenRouter</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">OpenRouter</span>
+            <p class="llm-desc">Unified API to access dozens of models from different providers with one key.</p>
+            <span class="llm-tag">openrouter.ai</span>
+          </a>
+          <a href="https://fireworks.ai" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('fireworks.ai','Fireworks AI')">
+            <div class="llm-card-top">
+              <span class="llm-name">Fireworks AI</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Fireworks AI</span>
+            <p class="llm-desc">Fast, cost-efficient inference API for open-source models with function calling support.</p>
+            <span class="llm-tag">fireworks.ai</span>
+          </a>
+          <a href="https://replicate.com" target="_blank" rel="noopener noreferrer" class="llm-card" onclick="track('replicate.com','Replicate')">
+            <div class="llm-card-top">
+              <span class="llm-name">Replicate</span>
+              <span class="llm-arrow">↗</span>
+            </div>
+            <span class="llm-maker">Replicate</span>
+            <p class="llm-desc">Run open-source AI models via API — LLMs, image gen, audio, and more.</p>
+            <span class="llm-tag">replicate.com</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="nav-brand">Demo<span class="muted">Site</span></p>
+      <p class="footer-note">Built with plain HTML + CSS + JS</p>
+    </div>
+  </footer>
+
+  <script>
+    function track(url, label) {
+      // GA4 hook: gtag('event', 'outbound_click', { link_url: url, link_text: label });
+      console.log(`[Analytics] outbound_click — ${label} → ${url}`);
+    }
+
+    // Mobile menu
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu   = document.getElementById('icon-menu');
+    const iconClose  = document.getElementById('icon-close');
+
+    hamburger.addEventListener('click', function () {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      iconMenu.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+    });
+  </script>
+
+</body>
+</html>
