@@ -151,6 +151,7 @@ const outboundLinks = [
 
 function handleOutboundClick(url, label) {
   // GA4 hook: gtag('event', 'outbound_click', { link_url: url, link_text: label });
+  gtag('event', 'outbound_click', { link_url: url, link_text: label });
   console.log(`[Analytics] outbound_click — ${label} → ${url}`);
   window.open(url, '_blank', 'noopener,noreferrer');
 }
@@ -216,7 +217,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     subscribe: document.getElementById('cf-subscribe').checked,
   };
 
-  // GA4 hook: gtag('event', 'form_submit', { form_name: 'contact' });
+  gtag('event', 'form_submit', { form_name: 'contact' });
   console.log('[Analytics] form_submit —', data);
 
   btn.disabled = false;
@@ -266,6 +267,7 @@ function selectVideo(index) {
     allowfullscreen></iframe>`;
 
   // GA4 hook: gtag('event', 'video_play', { video_title: v.title });
+  gtag('event', 'video_play', { video_title: v.title });
   console.log(`[Analytics] video_play — ${v.title}`);
 
   document.getElementById('video-title').textContent = v.title;
@@ -320,6 +322,7 @@ function buildDownloadList() {
 
 function trackDownload(name) {
   // GA4 hook: gtag('event', 'file_download', { file_name: name });
+  gtag('event', 'file_download', { file_name: name });
   console.log(`[Analytics] file_download — ${name}`);
 }
 
